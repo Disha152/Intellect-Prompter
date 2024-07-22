@@ -4,6 +4,8 @@ This project demonstrates a web-based application to query a dataset through nat
 
 ## Features
 
+Travel to the root of the directory !
+
 For this purpose, it uses:
 
 - [Streamlit] to build a data science web app.
