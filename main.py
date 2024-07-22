@@ -13,7 +13,7 @@ load_dotenv()
 
 
 # Set API Keys
-os.environ['PANDASAI_API_KEY'] ="$2a$10$UrAOkPe3dcj4KxxuccajZe1/Tw8YZl1TwHERKf3JrhwOXebnnxebS"
+os.environ['PANDASAI_API_KEY'] ="your_pandasai_api_key"
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Define custom callback class for Gemini

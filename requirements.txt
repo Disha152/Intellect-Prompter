@@ -1,0 +1,10 @@
+streamlit
+google-generativeai
+python-dotenv
+pandas==1.5.3
+pandasai==1.4.10
+numpy==1.26.4
+faker
+pydantic
+requests
+pyyaml
