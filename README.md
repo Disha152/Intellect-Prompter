@@ -12,7 +12,7 @@ For this purpose, it uses:
 
 ## Download Dataset
 
-Data is already provided in the 'data' folder.
+Download the dataset into the data folder at the root of the project.
 
 ## Run the Project
 
