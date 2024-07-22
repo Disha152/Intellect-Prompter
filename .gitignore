@@ -1,0 +1,6 @@
+
+cache/
+pandasai.log
+__pycache__
+.conda
+requirements.txt
