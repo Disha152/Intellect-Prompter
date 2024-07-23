@@ -1,5 +1,11 @@
 # Chat with Your Dataset
 
+
+https://github.com/user-attachments/assets/7d7381f4-75b8-44c0-a92f-e8ca3b987198
+
+
+
+
 This project demonstrates a web-based application to query a dataset through natural language using AI-powered solutions.
 
 ## Features
