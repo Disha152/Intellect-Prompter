@@ -1,7 +1,10 @@
 # AI-POWERED QUERY GENERATOR
 
 
-https://github.com/user-attachments/assets/7d7381f4-75b8-44c0-a92f-e8ca3b987198
+
+https://github.com/user-attachments/assets/00be4fb4-ec15-4a97-9d46-b34ce28a1a11
+
+
 
 
 
@@ -10,6 +13,17 @@ This project demonstrates a web-based application to query a dataset through nat
 
 ## Features
 
+1) Error Handling -
+   Included try-except block to catch and display errors from both PandasAI and 
+   Google GenerativeAI and added  voice recognition error handling.
+2) Real time Query Suggestions -
+   Added an expander with the sample query suggestions assiting 
+   users in formatting queries.
+3) Advanced Visualization -
+   Utilized plotly library for plotting the retrieved data which is the actual response.
+
+## Implementation
+  
 Travel to the root of the directory !
 
 For this purpose, it uses:
@@ -40,18 +54,13 @@ conda activate streamlit-pandasai
 In your active conda environment install dependencies : 
 
 ```sh
-pip install streamlit google-generativeai python-dotenv pandas pandasai numpy faker pydantic requests pyyaml
+pip install streamlit google-generativeai python-dotenv pandas pandasai numpy faker pydantic requests pyyaml SpeechRecognition plotly
 ```
 
 # Set the API KEYS :
 1) Get your apis key from [Pandasai](https://www.pandabi.ai/admin/api-keys) and [GoogleAPI](https://aistudio.google.com/app/apikey).
 2) Replace the 'your_pandasai_api_key' and 'your_google_api_key' with your actual apis key in your main.py file with your actual api key.
 3) Save the changes.
-
-#Install python dependencies in the activate Python environment 
-```sh 
-pip install -r requirements.txt
-```
 
 #Run the app
 ```SH
