@@ -12,9 +12,15 @@ import pandas as pd
 load_dotenv()
 
 
-# Set API Keys
-os.environ['PANDASAI_API_KEY'] ="your_pandasai_api_key"
+# Set environment variable for PANDASAI_API_KEY
+os.environ['PANDASAI_API_KEY'] = "your_pandasai_api_key"
+
+# Set environment variable for GOOGLE_API_KEY
+os.environ['GOOGLE_API_KEY'] = "your_google_api_key"
+
+# Configure genai with the Google API key
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
 
 # Define custom callback class for Gemini
 class StreamlitCallback:
@@ -49,7 +55,7 @@ df = load_data("./data")
 
 # Display a dataframe preview
 with st.expander("🤖 Dataframe Preview"):
-    st.write(df.tail(100))
+    st.write(df.tail(50))
 
 # Create a SmartDataframe instance for PandasAI
 sdf = SmartDataframe(df)
