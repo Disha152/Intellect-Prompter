@@ -44,7 +44,7 @@ pip install streamlit google-generativeai python-dotenv pandas pandasai numpy fa
 ```
 
 # Set the API KEYS :
-1) Get your apis key from [Pandasai]{https://www.pandabi.ai/admin/api-keys} and [GoogleAPI]{https://aistudio.google.com/app/apikey}.
+1) Get your apis key from [Pandasai](https://www.pandabi.ai/admin/api-keys) and [GoogleAPI](https://aistudio.google.com/app/apikey).
 2) Replace the 'your_pandasai_api_key' and 'your_google_api_key' with your actual apis key in your main.py file with your actual api key.
 3) Save the changes.
 
@@ -57,3 +57,4 @@ pip install -r requirements.txt
 ```SH
 streamlit run main.py
 ```
+Therefore , our query generator not only give the SQL query but also it's explanation , the output and the visual reperesentation of data.
