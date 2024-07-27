@@ -82,7 +82,7 @@ voice_query_button = st.button("Use Voice Input 🎤")
 if voice_query_button:
     query = get_voice_query()
 
-container = st.container()
+
 
 # How to Use section
 with st.expander("❓How to Use?"):
@@ -103,6 +103,8 @@ with st.expander("💡Sample Queries"):
 
 # Generate button
 st.button('Generate 🎊')
+
+container = st.container()
 
 if query:
     try:
