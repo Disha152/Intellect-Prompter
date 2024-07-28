@@ -49,7 +49,7 @@ conda create -n streamlit-pandasai python=3.9
 conda activate streamlit-pandasai
 ```
 
-##Install the Dependencies 
+## Install the Dependencies 
 
 In your active conda environment install dependencies : 
 
@@ -57,12 +57,12 @@ In your active conda environment install dependencies :
 pip install streamlit google-generativeai python-dotenv pandas pandasai numpy faker pydantic requests pyyaml SpeechRecognition plotly
 ```
 
-##Set the API KEYS :
+## Set the API KEYS :
 1) Get your apis key from [Pandasai](https://www.pandabi.ai/admin/api-keys) and [GoogleAPI](https://aistudio.google.com/app/apikey).
 2) Replace the 'your_pandasai_api_key' and 'your_google_api_key' with your actual apis key in your main.py file with your actual api key.
 3) Save the changes.
 
-##Run the app
+## Run the app
 ```SH
 streamlit run main.py
 ```
