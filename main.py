@@ -11,14 +11,43 @@ import speech_recognition as sr
 # Load environment variables
 load_dotenv()
 
-# Set environment variables
-os.environ['PANDASAI_API_KEY'] = "$2a$10$ipYpseAvcKuwebxJMt9bauh9vPzzNhTZqBCyXUtOsW9ogPjI4HmRO"
-os.environ['GOOGLE_API_KEY'] = "AIzaSyCI7fmbK5Wmj6Sf3mVlUG49OQLJqKP7MHY"
+
+# Set environment variable for PANDASAI_API_KEY
+os.environ['PANDASAI_API_KEY'] = "your_pandasai_api_key"
+
+# Set environment variable for GOOGLE_API_KEY
+os.environ['GOOGLE_API_KEY'] = "your_google_api_key"
 
 # Configure Gemini AI with Google API key
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-# Page title
+
+# Define custom callback class for Gemini
+class StreamlitCallback:
+    def __init__(self, container) -> None:  # Corrected __init__ method
+        self.container = container
+
+    def on_code(self, response: str):
+        self.container.code(response)
+
+# Define custom response parser for PandasAI
+class StreamlitResponse(ResponseParser):
+    def __init__(self, context) -> None:  # Corrected __init__ method
+        super().__init__(context)
+
+    def format_dataframe(self, result):
+        st.dataframe(result["value"])
+        return
+
+    def format_plot(self, result):
+        st.image(result["value"])
+        return
+
+    def format_other(self, result):
+        st.code(result["value"], language='sql')
+        return
+
+# st.write("#AI Query Generator ✨")
 st.markdown("# AI-Powered Data Query Interface ✨")
 
 # Load dataset
@@ -31,36 +60,42 @@ with st.expander("🤖 Dataframe Preview"):
 # SmartDataframe instance for PandasAI
 sdf = SmartDataframe(df)
 
-# User query input
-query = st.text_area("🗣️ Chat with Dataframe!")
+# Input for user query
+query = st.text_area("🗣️ Chat with Dataframe !")
+container = st.container()
 
-# Voice input button
-if st.button("Use Voice Input 🎤"):
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.write("Say something!")
-        audio = recognizer.listen(source)
+# How to Use section
+with st.expander(" How to Use?"):
+    st.write("""
+  * Enter your data query in the text area above.
+  * Click the "Generate " button.
+  * The results of your query will be displayed below the input area.
+
+  **Note:** This application currently uses Google Generative AI (Gemini) to process your queries and PandasAI to directly retrieve data from your database.
+""")
+
+
+st.button('Generate 🎊')
+
+if query:
     try:
-        query = recognizer.recognize_google(audio)
-        st.write(f"You said: {query}")
-    except sr.UnknownValueError:
-        st.error("Could not understand audio")
-    except sr.RequestError as e:
-        st.error(f"Error: {e}")
-
-# Sample queries
-query_suggestions = [
-    "Give me the top 10 customer id of customers whose tx_amount > 100",
-    "Get me the top 10 customer id with the largest fraud amount (tx_fraud=1)",
-    "Plot the graph of amount of fraud for the top 10 customer_id"
-]
-with st.expander("💡 Sample Queries"):
-    for suggestion in query_suggestions:
-        st.write(f"- {suggestion}")
-
-# Generate button
-if st.button('Generate 🎊') and query:
+        # PandasAI interaction
+        response = sdf.chat(query)
+        
+        if isinstance(response, dict):
+            if response.get("type") == "dataframe":
+                st.dataframe(response["value"])
+            elif response.get("type") == "plot":
+                st.image(response["value"])
+            else:
+                st.write(response)
+        else:
+            st.write(response)
+    except Exception as e:
+        st.error(f"PandasAI Error: {e}")
+    
     try:
+        # Ensure the Google API key is set
         api_key = os.getenv("GOOGLE_API_KEY")
         if not api_key:
             st.error("GOOGLE_API_KEY environment variable not set.")
