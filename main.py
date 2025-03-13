@@ -107,21 +107,7 @@ st.button('Generate 🎊')
 container = st.container()
 
 if query:
-    # try:
-    #     # PandasAI interaction
-    #     response = sdf.chat(query)
-        
-    #     if isinstance(response, dict):
-    #         if response.get("type") == "dataframe":
-    #             st.dataframe(response["value"])
-    #         elif response.get("type") == "plot":
-    #             st.plotly_chart(px.bar(response["value"]))
-    #         else:
-    #             st.write(response)
-    #     else:
-    #         st.write(response)
-    # except Exception as e:
-    #     st.error(f"PandasAI Error: {e}")
+   
     
     try:
         # Ensure the Google API key is set
