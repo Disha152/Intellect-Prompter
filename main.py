@@ -28,22 +28,7 @@ class StreamlitCallback:
     def on_code(self, response: str):
         self.container.code(response)
 
-# Define custom response parser for PandasAI
-class StreamlitResponse(ResponseParser):
-    def __init__(self, context) -> None:
-        super().__init__(context)
 
-    def format_dataframe(self, result):
-        st.dataframe(result["value"])
-        return
-
-    def format_plot(self, result):
-        st.plotly_chart(px.bar(result["value"]))
-        return
-
-    def format_other(self, result):
-        st.code(result["value"], language='sql')
-        return
 
 # Voice recognition for query input
 def get_voice_query():
