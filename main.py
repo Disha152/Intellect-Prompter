@@ -13,10 +13,10 @@ import speech_recognition as sr
 load_dotenv()
 
 # Set environment variable for PANDASAI_API_KEY
-os.environ['PANDASAI_API_KEY'] = "your_pandasai_api_key"
+os.environ['PANDASAI_API_KEY'] = "$2a$10$YdatbqxN5.fX26WJ4CVyYO3/Yjlc6XnksZ4whKsA2XhGLfmb0mL0e"
 
 # Set environment variable for GOOGLE_API_KEY
-os.environ['GOOGLE_API_KEY'] = "your_google_api_key"
+os.environ['GOOGLE_API_KEY'] = "AIzaSyCI7fmbK5Wmj6Sf3mVlUG49OQLJqKP7MHY"
 
 # Configure genai with the Google API key
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -107,21 +107,21 @@ st.button('Generate 🎊')
 container = st.container()
 
 if query:
-    try:
-        # PandasAI interaction
-        response = sdf.chat(query)
+    # try:
+    #     # PandasAI interaction
+    #     response = sdf.chat(query)
         
-        if isinstance(response, dict):
-            if response.get("type") == "dataframe":
-                st.dataframe(response["value"])
-            elif response.get("type") == "plot":
-                st.plotly_chart(px.bar(response["value"]))
-            else:
-                st.write(response)
-        else:
-            st.write(response)
-    except Exception as e:
-        st.error(f"PandasAI Error: {e}")
+    #     if isinstance(response, dict):
+    #         if response.get("type") == "dataframe":
+    #             st.dataframe(response["value"])
+    #         elif response.get("type") == "plot":
+    #             st.plotly_chart(px.bar(response["value"]))
+    #         else:
+    #             st.write(response)
+    #     else:
+    #         st.write(response)
+    # except Exception as e:
+    #     st.error(f"PandasAI Error: {e}")
     
     try:
         # Ensure the Google API key is set
